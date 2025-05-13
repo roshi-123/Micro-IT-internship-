@@ -1,0 +1,340 @@
+[
+  {
+    "model": "cobalt_app.product",
+    "pk": 1,
+    "fields": {
+      "product_title": "Gold Iron Apple Shape Pot",
+      "product_image": "product/vase1.webp",
+      "description": "A stylish flower vase with a unique apple shape, made from gold iron, perfect for adding an elegant touch to any space.",
+      "old_price": "2299.00",
+      "new_price": "1500.00",
+      "category": 3,
+      "is_featured": true
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 2,
+    "fields": {
+      "product_title": "Jesse Leather | 1 Seating Sofa",
+      "product_image": "product/chair1.webp",
+      "description": "A luxurious leather sofa offering ultimate comfort with a sleek, modern design. Ideal for your living room.",
+      "old_price": "44000.00",
+      "new_price": "22000.00",
+      "category": 7,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 3,
+    "fields": {
+      "product_title": "Shay Coffee Table Set",
+      "product_image": "product/chair2_zemg8CI.webp",
+      "description": "This coffee table set with chair combines contemporary style with practicality, perfect for adding a touch of elegance to your living room.",
+      "old_price": "25000.00",
+      "new_price": "15000.00",
+      "category": 7,
+      "is_featured": true
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 4,
+    "fields": {
+      "product_title": "Half Moon Design Metal Desk Pot (Gold)",
+      "product_image": "product/vase2.webp",
+      "description": "A chic gold desk vase with a half-moon design, adding a sophisticated look to your workspace or home décor.",
+      "old_price": "999.00",
+      "new_price": "449.00",
+      "category": 3,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 5,
+    "fields": {
+      "product_title": "Preston Iron Grey Desk Vase",
+      "product_image": "product/vase3.webp",
+      "description": "A simple yet stylish iron grey desk pot, perfect for small plants or flowers, enhancing the aesthetics of your desk.",
+      "old_price": "349.00",
+      "new_price": "249.00",
+      "category": 3,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 6,
+    "fields": {
+      "product_title": "White Metal Desk Vase",
+      "product_image": "product/vase4.webp",
+      "description": "Elegant white metal desk pots ideal for small plants, offering a clean, minimalist look for your office or home.",
+      "old_price": "517.00",
+      "new_price": "290.00",
+      "category": 3,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 7,
+    "fields": {
+      "product_title": "Black Metal Hanging Planters",
+      "product_image": "product/vase5.webp",
+      "description": "These sleek black metal hanging planters and vase are perfect for adding a touch of greenery to your home or office, suspended stylishly.",
+      "old_price": "999.00",
+      "new_price": "549.00",
+      "category": 3,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 8,
+    "fields": {
+      "product_title": "Lenovo IdeaPad Slim 3 Intel Core i5 12th Gen 12450",
+      "product_image": "product/laptop1.webp",
+      "description": "A powerful, slim laptop featuring Intel Core i5, ideal for productivity, entertainment, and everyday computing needs.",
+      "old_price": "69790.00",
+      "new_price": "46990.00",
+      "category": 1,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 9,
+    "fields": {
+      "product_title": "Acer Predator Helios Neo 16 Intel Core i7 14th Gen",
+      "product_image": "product/laptop2.webp",
+      "description": "A gaming laptop with powerful performance, featuring Intel Core i7 14th Gen, perfect for high-end gaming and content creation.",
+      "old_price": "142999.00",
+      "new_price": "114990.00",
+      "category": 1,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 10,
+    "fields": {
+      "product_title": "Lenovo V14 Intel Core i5 12th Gen 1235U",
+      "product_image": "product/laptop3.webp",
+      "description": "A budget-friendly laptop with solid performance, powered by Intel Core i5, great for work and study.",
+      "old_price": "47999.00",
+      "new_price": "37999.00",
+      "category": 1,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 11,
+    "fields": {
+      "product_title": "HP Intel Core i5 12th Gen 1235U",
+      "product_image": "product/laptop5.webp",
+      "description": "A reliable HP laptop with Intel Core i5 processor, offering excellent performance for work, learning, and multimedia.",
+      "old_price": "70502.00",
+      "new_price": "47680.00",
+      "category": 1,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 12,
+    "fields": {
+      "product_title": "DELL 15 AMD Ryzen 3 Quad Core 7320U",
+      "product_image": "product/laptop4.webp",
+      "description": "A DELL laptop with AMD Ryzen 3, providing good performance for casual computing and everyday tasks.",
+      "old_price": "47990.00",
+      "new_price": "37990.00",
+      "category": 1,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 13,
+    "fields": {
+      "product_title": "Apple MacBook AIR Apple M2",
+      "product_image": "product/laptop6.webp",
+      "description": "A premium ultra-lightweight laptop with Apple’s M2 chip, ideal for professionals and creatives seeking high performance.",
+      "old_price": "99990.00",
+      "new_price": "74990.00",
+      "category": 1,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 14,
+    "fields": {
+      "product_title": "Logitech G102 Light Sync mouse",
+      "product_image": "product/mouse1.webp",
+      "description": "A gaming mouse with customizable RGB lighting, designed for precision and speed, making it ideal for competitive gaming.",
+      "old_price": "1995.00",
+      "new_price": "1190.00",
+      "category": 2,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 15,
+    "fields": {
+      "product_title": "Arctic Fox Breathing Lights and DPI Upto 3600 Wire",
+      "product_image": "product/mouse2.webp",
+      "description": "A wired gaming mouse with breathing lights and adjustable DPI, delivering accuracy and responsiveness in every game.",
+      "old_price": "599.00",
+      "new_price": "249.00",
+      "category": 2,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 16,
+    "fields": {
+      "product_title": "Classic & Modern Multicolour Plastic Wall Clock",
+      "product_image": "product/clock1.webp",
+      "description": "A vibrant, multicoloured plastic wall clock that blends classic and modern design, perfect for adding character to any room.",
+      "old_price": "1499.00",
+      "new_price": "799.00",
+      "category": 4,
+      "is_featured": true
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 17,
+    "fields": {
+      "product_title": "Octave Roman Black Iron Table Clock",
+      "product_image": "product/clock2.webp",
+      "description": "An elegant black iron table clock with Roman numerals, perfect for enhancing the charm of your desk or table.",
+      "old_price": "1299.00",
+      "new_price": "1049.00",
+      "category": 4,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 18,
+    "fields": {
+      "product_title": "Green Plastic Double Sided 2 Faces Platform Clock",
+      "product_image": "product/clock3.webp",
+      "description": "A unique, two-faced platform clock with a green plastic frame, ideal for home or office.",
+      "old_price": "9999.00",
+      "new_price": "6549.00",
+      "category": 4,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 19,
+    "fields": {
+      "product_title": "MOTOROLA EnvisionX 127 cm HD (4K) Tv",
+      "product_image": "product/tv1.webp",
+      "description": "A 50-inch Ultra HD (4K) television offering stunning visuals, perfect for a cinematic experience in your living room.",
+      "old_price": "49999.00",
+      "new_price": "32999.00",
+      "category": 5,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 20,
+    "fields": {
+      "product_title": "SAMSUNG New D Series Brighter Crystal 4K Vision Pr",
+      "product_image": "product/tv2.webp",
+      "description": "A 4K smart TV with vibrant colors and crystal-clear resolution, perfect for your home entertainment setup.",
+      "old_price": "50990.00",
+      "new_price": "44990.00",
+      "category": 5,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 21,
+    "fields": {
+      "product_title": "Palermo Fabric 3 Seater Sofa",
+      "product_image": "product/sofa1.webp",
+      "description": "A cozy 3-seater fabric sofa designed for comfort and durability, perfect for family living rooms.",
+      "old_price": "65990.00",
+      "new_price": "53990.00",
+      "category": 6,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 22,
+    "fields": {
+      "product_title": "Riley Wooden Bench",
+      "product_image": "product/sofa2.webp",
+      "description": "A versatile wooden bench with a modern design, ideal for living rooms, entryways, and bedrooms.",
+      "old_price": "22999.00",
+      "new_price": "13990.00",
+      "category": 6,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 23,
+    "fields": {
+      "product_title": "Stanley Outdoor Teak Chair",
+      "product_image": "product/sofa3.webp",
+      "description": "A sturdy outdoor teak chair that blends style with durability, perfect for patios and gardens.",
+      "old_price": "25990.00",
+      "new_price": "18990.00",
+      "category": 6,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 24,
+    "fields": {
+      "product_title": "Harrison Accent Chair",
+      "product_image": "product/sofa4.webp",
+      "description": "A stylish accent chair with a modern design, perfect for adding an elegant touch to any room.",
+      "old_price": "22990.00",
+      "new_price": "17990.00",
+      "category": 6,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 25,
+    "fields": {
+      "product_title": "Bertha 3 Seater Sofa",
+      "product_image": "product/sofa5.webp",
+      "description": "A luxurious 3-seater sofa designed for maximum comfort and style, ideal for large living rooms.",
+      "old_price": "74990.00",
+      "new_price": "53990.00",
+      "category": 6,
+      "is_featured": false
+    }
+  },
+  {
+    "model": "cobalt_app.product",
+    "pk": 26,
+    "fields": {
+      "product_title": "Hassan Outdoor Teak Chair",
+      "product_image": "product/sofa6.webp",
+      "description": "A robust outdoor teak chair, offering both comfort and durability for your outdoor living spaces.",
+      "old_price": "19999.00",
+      "new_price": "15999.00",
+      "category": 6,
+      "is_featured": false
+    }
+  }
+]

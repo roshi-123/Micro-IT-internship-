@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Product Preview in Custom Card Format -->
+<br><br>
+<div class="box-container">
+    <div class="box one">
+      <div class="image-box">
+        <div class="image">
+          <img src="{{product.product_image.url}}" alt="Product Image">
+        </div>
+        <div class="details">
+          <center><strong><div class="topic">{{product.product_title}}</div></strong>
+          <p class="description">{{product.description}}</p>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <div class="prices">
+            <p class="old-price">&#8377;{{product.old_price}}</p>
+            <p class="new-price">&#8377;{{product.new_price}}</p>
+          </div>
+          <div class="button-group">
+          <a href="{% url 'add_cart' product.id %}"><button class="btn-add-to-cart">Add To Cart</button></a>
+            <form method="POST" action="{% url 'add_to_wishlist' product.id %}">
+              {% csrf_token %}
+              <button type="submit" style="background: none; border: none; padding: 0;">
+                <button class="btn-add-to-wishlist">Add To Wishlist</button>
+              </button>
+          </form>
+          </div>
+        </center>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

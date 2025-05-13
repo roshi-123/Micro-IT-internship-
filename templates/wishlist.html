@@ -1,0 +1,28 @@
+{%extends 'base.html' %}
+{%load static%}
+{%block content%}
+<div class="containers"> <!-- Make sure the "containers" class wraps around the product cards -->
+    {% for item in wish_items %}
+      <div class="images" id="product-{{forloop.counter}}" data-name="product-{{forloop.counter}}">
+        <div class="icon-container">
+          <div class="icon-box eye-icon">
+            <a href="{% url 'product_view' item.product.id %}"><img src='{% static "./image/view.png"%}' class="eye" alt="Eye Icon" /></a>
+          </div>
+        </div>
+        <img src="{{ item.product.product_image.url }}" alt="{{ item.product.product_title }}">
+        <h3>{{ item.product.product_title }}</h3>
+        <div class="prices">
+          <p class="old-price">&#8377;{{ item.product.old_price }}</p>
+          <p class="new-price">&#8377;{{ item.product.new_price }}</p>
+        </div>
+        <form action="{% url 'delete_from_wishlist' %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="item_id" value="{{ item.id }}">
+          <input type="submit" value="Delete">
+      </form>
+      
+       
+      </div>
+    {% endfor %}
+  </div>
+{%endblock%}

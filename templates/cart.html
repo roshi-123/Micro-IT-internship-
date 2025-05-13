@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="products-container">
+    <div class="product-header" style="font-style:bold;">
+        <h5 class="product-title">PRODUCT</h5>
+        <h5 class="price">PRICE</h5>
+        <h5 class="quantity">QUANTITY</h5>
+        <h5 class="total">TOTAL</h5>
+        <h5 class="delete">DELETE</h5>    
+    </div>
+    
+    {% for cart_item in cart_items %}
+    <div class="product">
+        <div class="product-info">
+            <img src="{{ cart_item.product.product_image.url }}" alt="{{ cart_item.product.product_title }}" class="product-image" />
+            <span class="product-title-text">{{ cart_item.product.product_title }}</span>
+        </div>
+
+        <div class="price">
+            <span>&#8377;{{ cart_item.product.new_price }}</span>
+        </div>
+        <div class="quantity">
+           <a href="{% url 'remove_cart' cart_item.product.id %}"> <ion-icon name="remove-circle-outline" class="decrease" data-tag="${item.tag}"></ion-icon></a>
+            <!-- Input field for quantity -->
+            <input type="text" value="{{ cart_item.quantity }}" class="quantity-input" style="width:30px;" />
+            <a href="{% url 'add_cart' cart_item.product.id %}"><ion-icon name="add-circle-outline" class="increase" data-tag="${item.tag}"></ion-icon></a>
+        </div>
+        <div class="total">
+            <span>&#8377;{{ cart_item.sub_total }}</span>
+        </div>
+        <div class="delete-product">
+          <a href="{% url 'remove_cart_item' cart_item.product.id%}"><ion-icon name="trash" class="delete-btn" data-tag="${item.tag}" style="margin-left:40px;"></ion-icon></a>
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="basketTotalContainer">
+        <h4 class="basketTotalTitle">Basket total</h4>
+        <h4 class="basketTotal">&#8377;{{total}}</h4>
+    </div> 
+<center>
+    <div>
+        <a href="{% url 'payment_details_page' %}?total={{ total }}"> <button id="buy-now">Buy Now</button></a>
+    </div>
+  </center>
+</div>
+{% endblock %}

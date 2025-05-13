@@ -1,0 +1,271 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Section</title>
+    <style>
+        /* Reset some default browser styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 30px 0;
+            color: #333;
+            font-size: 36px;
+            font-weight: 600;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .button {
+            padding: 12px 30px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .button:focus {
+            outline: none;
+        }
+
+        .section {
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .faq-question {
+            font-size: 20px;
+            font-weight: 600;
+            color: #4CAF50;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: #388e3c;
+        }
+
+        .answer {
+            display: none;
+            margin-top: 10px;
+            padding-left: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .contact-info, .help-info {
+            font-size: 16px;
+            color: #444;
+        }
+
+        .contact-info form {
+            margin-top: 20px;
+        }
+
+        .contact-info label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 16px;
+        }
+
+        .contact-info input,
+        .contact-info textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .contact-info button {
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .contact-info button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .help-info {
+            font-size: 16px;
+        }
+
+        .help-info a {
+            color: #1a73e8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .help-info a:hover {
+            color: #0c58d3;
+            text-decoration: underline;
+        }
+
+        .help-info li {
+            margin-bottom: 12px;
+        }
+
+        .help-info h3 {
+            font-size: 24px;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            padding-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Help & Support</h2>
+
+    <div class="button-container">
+        <button class="button" onclick="showSection('faq')">FAQ</button>
+        <button class="button" onclick="showSection('contact')">Contact Us</button>
+        <button class="button" onclick="showSection('help')">Help</button>
+    </div>
+
+    <!-- FAQ Section -->
+    <div id="faq" class="section">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <p class="faq-question" onclick="toggleAnswer(1)">What is your return policy?</p>
+            <div class="answer" id="answer-1">Our return policy allows returns within 30 days with a receipt.</div>
+        </div>
+        
+        <div class="faq-item">
+            <p class="faq-question" onclick="toggleAnswer(2)">Do you offer international shipping?</p>
+            <div class="answer" id="answer-2">Yes, we offer international shipping to selected countries.</div>
+        </div>
+        
+        <div class="faq-item">
+            <p class="faq-question" onclick="toggleAnswer(3)">How can I track my order?</p>
+            <div class="answer" id="answer-3">You can track your order through the tracking link provided in your email.</div>
+        </div>
+        
+        <div class="faq-item">
+            <p class="faq-question" onclick="toggleAnswer(4)">What payment methods do you accept?</p>
+            <div class="answer" id="answer-4">We accept credit/debit cards, PayPal, and other secure payment methods.</div>
+        </div>
+        
+        <div class="faq-item">
+            <p class="faq-question" onclick="toggleAnswer(5)">Can I modify my order after placing it?</p>
+            <div class="answer" id="answer-5">Modifications can be made within 24 hours of placing the order.</div>
+        </div>
+    </div>
+
+    <!-- Contact Us Section -->
+    <div id="contact" class="section contact-info">
+        <h3>Contact Us</h3>
+        <p>Fill in your details, and our support team will reach out to you:</p>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br><br>
+            <button type="submit" class="button">Submit</button>
+        </form>
+    </div>
+
+    <!-- Help Section -->
+    <div id="help" class="section help-info">
+        <h3>Need Help?</h3>
+        <p>For immediate assistance, please refer to our support guides or contact our help center:</p>
+        <ul>
+            <li><a href="#">FAQs & Troubleshooting</a></li>
+            <li><a href="#">Live Chat Support</a></li>
+            <li>Email: support@example.com</li>
+            <li>Phone: +123-456-7890</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Your E-Commerce Site. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Function to toggle FAQ answers
+        function toggleAnswer(id) {
+            let answer = document.getElementById('answer-' + id);
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Function to show selected section and hide others
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.style.display = 'none'); // Hide all sections
+            
+            const selectedSection = document.getElementById(sectionId);
+            selectedSection.style.display = 'block'; // Show the selected section
+        }
+
+        // Initialize to show FAQ section by default
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('faq');
+        });
+    </script>
+
+</body>
+</html>

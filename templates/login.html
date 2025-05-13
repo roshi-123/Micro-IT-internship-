@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Update the path to your static CSS -->
+</head>
+<body>
+    {% if messages %}
+    <div class="messages-container">
+      {% for message in messages %}
+        <div class="message">
+          <span class="message-content">{{ message }}</span>
+          <button class="close-message-btn">&times;</button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+    <center>
+    <div class="form-container">
+        <a href="{% url 'index' %}"><button class="close-btn">&times;</button></a>
+        <form id="loginForm" action="{% url 'login' %}" method="POST">
+            <h2>Login</h2>
+            {% csrf_token %}
+            
+            <!-- Email input -->
+            <div class="inputBox">
+                <label for="login_name">Username</label>
+                <input type="text" name="login-name" id="login_name" class="input" placeholder="Enter your Username" required>
+            </div>
+        
+            <!-- Password input -->
+            <div class="inputBox">
+                <label for="login-password">Password</label>
+                <input type="password" name="login-password" id="login-password" class="input" placeholder="Enter your password" required>
+            </div>
+        
+            <!-- Submit button -->
+            <button type="submit">Login</button>
+        
+            <!-- Switch to Register page -->
+            <p class="switch-form">Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+        </form>        
+    </div>
+    </center>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          // Get all the messages
+          const messages = document.querySelectorAll('.message');
+          
+          messages.forEach(function(message) {
+            // Set a timer to remove the message after 2 seconds (2000ms)
+            setTimeout(function() {
+              // Fade out the message
+              message.style.opacity = 0;
+      
+              // After the fade out, hide it completely
+              setTimeout(function() {
+                message.style.display = 'none';
+              }, 500); // This matches the transition time in CSS (500ms)
+            }, 2000); // Time after which the message will fade out (2 seconds)
+          });
+        });
+      </script>
+</body>
+</html>

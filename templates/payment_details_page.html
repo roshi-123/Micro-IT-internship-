@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal Integration</title>
+    <style>
+        /* Basic styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .payment-container {
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .transaction-info {
+            margin-bottom: 20px;
+        }
+
+        #loading-spinner {
+            font-size: 16px;
+            color: #0070ba;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="payment-container">
+    <!-- Transaction Info -->
+    <div class="transaction-info">
+        <h3>Transaction Details</h3>
+        <p>Total Amount: <span id="transaction-amount">$0.00</span></p> <!-- The amount will be inserted here -->
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loading-spinner">Loading PayPal button...</div>
+
+    <!-- PayPal Button Container -->
+    <div id="paypal-button-container"></div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Lazy load PayPal SDK
+        const script = document.createElement("script");
+        script.src = "https://www.paypal.com/sdk/js?client-id=AYk4zIRmS4i0TH_gdv3Ri-eUB3KXQtEreO0G1VK3s7SF7BUvRXjjqxOSAgPTkHvpiTAd9KtLZbuDJ-wS&currency=USD";
+        document.body.appendChild(script);
+
+        script.onload = function() {
+            const loadingSpinner = document.getElementById("loading-spinner");
+
+            // Get total price from URL (example: ?total=50)
+            const urlParams = new URLSearchParams(window.location.search);
+            const totalPrice = urlParams.get('total');
+
+            if (!totalPrice) {
+                alert("Error: No total price found in URL");
+                return;
+            }
+
+            // Display the total amount dynamically
+            document.getElementById("transaction-amount").textContent = `$${totalPrice}`;
+
+            // Show the loading spinner
+            loadingSpinner.style.display = "block";
+
+            // Render the PayPal button into #paypal-button-container
+            paypal.Buttons({
+                createOrder: function (data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: totalPrice // Dynamically pass the total price
+                            }
+                        }]
+                    }).then(function (orderId) {
+                        return orderId;
+                    });
+                },
+
+                onApprove: function (data, actions) {
+                    return actions.order.capture().then(function (details) {
+                        alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                        window.location.href = "{% url 'index' %}";  // Redirect to thank you page after successful payment
+                    });
+                },
+
+                onError: function (err) {
+                    console.error("PayPal error: ", err);
+                },
+
+                onInit: function(data, actions) {
+                    // Hide the loading spinner once the button is ready
+                    loadingSpinner.style.display = "none";
+                }
+            }).render('#paypal-button-container');
+        };
+    });
+</script>
+
+</body>
+</html>

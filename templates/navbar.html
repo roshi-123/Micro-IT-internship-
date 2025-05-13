@@ -1,0 +1,179 @@
+<!-- Navbar -->
+{% load static %}
+<nav class="nav">
+  <div class="container nav_container">
+    <!-- Left side with logo -->
+    <div class="nav_left">
+      <h2><a href="#" class="nav_logo">FurniGo</a></h2>
+    </div>
+
+    <!-- Right side with icons -->
+    <div class="nav_items">
+      <form action="{% url 'search' %}" method="POST" class="nav_form searchbar">
+        {% csrf_token %}
+        <input type="text" name="searched" class="nav_input" id="searchBar" placeholder="search here...." />
+        <button type="submit" class="searchbutton">
+            <img src='{% static "image/search.png" %}' alt="" class="nav_searchs" />
+        </button>
+      </form>
+      
+      {% if user.is_authenticated %}
+        <!-- Cart Icon -->
+        <a href="{% url 'cart' %}">
+          <img src='{% static "image/cart.png" %}' alt="Cart Icon" class="nav_cart" />
+          <span class="span">{{ cart_count }}</span> <!-- Cart count here -->
+        </a>
+      
+        <!-- Wishlist Icon -->
+         <a href="{% url 'wishlist' %}">
+        <div class="wishlist-icon" id="wishlist-icon">
+          <img src="{% static 'image/heart.png' %}" alt="Heart Icon" class="nav_heart" />
+          <span id="wishlist-count">{{ wish_count }}</span> <!-- Wishlist Counter -->
+        </div>
+      </a>
+      {% else %}
+        <!-- Disabled Cart Icon for Unauthenticated Users -->
+        <a href="javascript:void(0)" id="cart-icon" class="disabled-icon">
+          <img src='{% static "image/cart.png" %}' alt="Cart Icon" class="nav_cart" />
+          <span class="span">0</span> <!-- Cart count is 0 -->
+        </a>
+      
+        <!-- Disabled Wishlist Icon for Unauthenticated Users -->
+        <div class="wishlist-icon" id="wishlist-icon" class="disabled-icon">
+          <img src="{% static 'image/heart.png' %}" alt="Heart Icon" class="nav_heart" />
+          <span id="wishlist-count">0</span> <!-- Wishlist Counter is 0 -->
+        </div>
+      
+        <!-- Login Prompt Message (visible when clicking disabled icons) -->
+        <div id="login-message" style="display:none;">
+          <p>You need to <a href="{% url 'login' %}">login</a> to access your cart and wishlist.</p>
+        </div>
+      {% endif %}
+      
+      <!-- Profile Dropdown -->
+      <div class="profile-dropdown">
+        <img src='{% static "image/profile.png"%}' alt="Profile" class="nav_profile" />
+        <span class="down-arrow">&#9660;</span>
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu">
+          <ul>
+            <li><a href="{% url 'help_center' %}">Help center</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}" >Logout</a></li>  <!-- Logout link -->
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>  <!-- Login link -->
+                <li><a href="{% url 'register' %}">Signup</a></li>  <!-- Signup link -->
+            {% endif %}          
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Select the disabled cart and wishlist icons
+    const cartIcon = document.getElementById('cart-icon');
+    const wishlistIcon = document.getElementById('wishlist-icon');
+    const loginMessage = document.getElementById('login-message');
+
+    // Check if the user is not authenticated
+    {% if not user.is_authenticated %}
+      // Show login message when cart or wishlist icons are clicked
+      function showLoginMessage() {
+        // Reset the message display and opacity each time it's clicked
+        loginMessage.style.display = 'block';
+        loginMessage.style.opacity = 1;  // Ensure it’s fully visible
+
+        // Hide the login message after 2 seconds
+        setTimeout(function() {
+          loginMessage.style.opacity = 0;  // Fade out the message
+          setTimeout(function() {
+            loginMessage.style.display = 'none';  // Hide it completely after fade
+          }, 500);  // Wait for fade-out duration
+        }, 2000);  // Show the message for 2 seconds
+      }
+
+      // Add event listeners for cart and wishlist icons
+      if (cartIcon) {
+        cartIcon.addEventListener('click', function(event) {
+          event.preventDefault();  // Prevent the default action
+          showLoginMessage();
+        });
+      }
+
+      if (wishlistIcon) {
+        wishlistIcon.addEventListener('click', function(event) {
+          event.preventDefault();  // Prevent the default action
+          showLoginMessage();
+        });
+      }
+    {% endif %}
+  });
+  const searchInput = document.querySelector('.nav_input');
+const texts = [
+  "Mobiles",
+  "Washing machines",
+  "Tvs",
+  "Flower vases",
+  "Clocks",
+  "Tables"
+];
+
+let currentTextIndex = 0;
+let currentCharIndex = 0;
+let isTyping = true;
+let typingInterval;
+let deletingInterval;
+
+// Function to simulate typing text in the placeholder
+function typeText() {
+  if (document.activeElement === searchInput) return; // Stop typing if the input is focused
+
+  const currentText = texts[currentTextIndex];
+
+  if (currentCharIndex < currentText.length) {
+    searchInput.setAttribute('placeholder', currentText.substring(0, currentCharIndex + 1));
+    currentCharIndex++;
+    typingInterval = setTimeout(typeText, 100); // Typing speed (in milliseconds)
+  } else {
+    // Once the text is fully typed, wait before starting to erase it
+    setTimeout(deleteText, 1000); // Pause before deleting (1 second)
+  }
+}
+
+// Function to simulate deleting text in the placeholder
+function deleteText() {
+  const currentText = texts[currentTextIndex];
+  
+  if (currentCharIndex > 0) {
+    searchInput.setAttribute('placeholder', currentText.substring(0, currentCharIndex - 1));
+    currentCharIndex--;
+    deletingInterval = setTimeout(deleteText, 50); // Deleting speed (in milliseconds)
+  } else {
+    // Move to the next text
+    currentTextIndex = (currentTextIndex + 1) % texts.length; // Cycle through the texts
+    typeText(); // Start typing the next text
+  }
+}
+
+// Stop typing when the user focuses on the input field
+searchInput.addEventListener('focus', () => {
+  clearTimeout(typingInterval);
+  clearTimeout(deletingInterval);
+});
+
+// Start typing the first text when the page is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  typeText(); // Start typing the first text as a placeholder
+});
+
+// Resume typing when the input field is unfocused and empty
+searchInput.addEventListener('blur', () => {
+  if (searchInput.value === '') { // Only resume typing if the field is empty
+    typeText(); // Resume typing if the field is empty after blur
+  }
+});
+
+</script>

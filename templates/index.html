@@ -1,0 +1,264 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <!-- Categories Below Navbar -->
+
+  <div class="categories-container">
+    <div class="category">
+      <div class="category-image">
+        <img src='{% static "./image/header2.jpg"%}' alt="All" />
+      </div>
+      <div class="category-name">All</div>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{% url 'all_products' %}">All Products</a></li>
+          <li><a href="{% url 'category_view' 'Laptop'%}">Laptop</a></li>
+          <li><a href="{% url 'category_view' 'Gaming-Mouse'%}">Gaming mouse</a></li>
+          <li><a href="{% url 'category_view' 'Flower-Vase'%}">Flower vases</a></li>
+          <li><a href="{% url 'category_view' 'Clock'%}">Clock</a></li>
+          <li><a href="{% url 'category_view' 'Tv'%}">Tv</a></li>
+          <li><a href="{% url 'category_view' 'Bed'%}">Beds</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="category">
+      <div class="category-image">
+        <img src='{% static "./image/electricals.png"%}' alt="Electrical Appliances" />
+      </div>
+      <div class="category-name">Electrical Appliances</div>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{% url 'category_view' 'Tv'%}">TV</a></li>
+          <li><a href="{% url 'category_view' 'Laptop'%}">Laptop</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="category">
+      <div class="category-image">
+        <img src='{% static "./image/furniture.webp"%}' alt="Furniture" />
+      </div>
+      <div class="category-name">Furniture</div>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{% url 'category_view' 'Chair'%}">Chairs</a></li>
+          <li><a href="{% url 'category_view' 'Sofa'%}">Sofas</a></li>
+          <li><a href="{% url 'category_view' 'Bed'%}">Beds</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="category">
+      <div class="category-image">
+        <img src='{% static "./image/decor.webp"%}' alt="Home Decor" />
+      </div>
+      <div class="category-name">Home Decor</div>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{% url 'category_view' 'Flower-Vase'%}">Flower vases</a></li>
+          <li><a href="{% url 'category_view' 'Clock'%}">Clocks</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="category">
+      <div class="category-image">
+        <img src='{% static "./image/gaming.png"%}' alt="Gaming" />
+      </div>
+      <div class="category-name">Gaming</div>
+      <div class="dropdown">
+        <ul>
+          <li><a href="{% url 'category_view' 'Gaming-Mouse'%}">Gaming mouse</a></li>
+          <li><a href="{% url 'category_view' 'Laptop'%}">Gaming Laptop</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  {% if messages %}
+  <div class="messages-container">
+    {% for message in messages %}
+      <div class="message">
+        <span class="message-content">{{ message }}</span>
+        <button class="close-message-btn">&times;</button>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+ <!-- Swiper Section (Image Slider) -->
+ <section class="hero-slider">
+  <div class="swiper-container">
+    <!-- Swiper Wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slide 1 (Furniture Offer) -->
+<div class="swiper-slide hero" id="slide1" style="background-image:url({% static 'image/header4.jpg' %});">
+<div class="container">
+  <div class="hero-content left-align">
+    <h2><p class="app-name">FurniGo</p></h2>
+    <p class="hero-subtitle">Exclusive Furniture Deals</p>
+    <h2 class="h1 hero-title">Up to 20% OFF</h2>
+    <br>
+    <a href="#prod"><button class="btn btn-primary">Shop Now</button></a>
+  </div>
+</div>
+</div>
+
+<!-- Slide 2 (Electrical Appliances Offer) -->
+<div class="swiper-slide hero" id="slide2" style="background-image:url({% static 'image/header2.jpg' %});">
+<div class="container">
+  <div class="hero-content right-align">
+    <h2><p class="app-name">FurniGo</p></h2>
+    <p class="hero-subtitle">Top-rated electronics now</p>
+    <h2 class="h1 hero-title">Up to 50% OFF</h2>
+    <br>
+    <a href="#prod"><button class="btn btn-primary">Shop Now</button></a>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+    <!-- Swiper Pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- Swiper Navigation -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+  <!-- 
+        - #SERVICE
+      -->
+
+      <section class="service">
+        <div class="container">
+
+          <ul class="service-list">
+
+            <li class="service-item">
+              <div class="service-item-icon">
+                <img src='{% static "./image/service-icon-1.svg"%}' alt="Service icon">
+              </div>
+
+              <div class="service-content">
+                <p class="service-item-title">Free Shipping</p>
+
+                <p class="service-item-text">On All Order Over $599</p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-item-icon">
+                <img src='{% static "./image/service-icon-2.svg"%}' alt="Service icon">
+              </div>
+
+              <div class="service-content">
+                <p class="service-item-title">Easy Returns</p>
+
+                <p class="service-item-text">30 Day Returns Policy</p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-item-icon">
+                <img src='{% static "./image/service-icon-3.svg"%}' alt="Service icon">
+              </div>
+
+              <div class="service-content">
+                <p class="service-item-title">Secure Payment</p>
+
+                <p class="service-item-text">100% Secure Gaurantee</p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-item-icon">
+                <img src='{% static "./image/service-icon-4.svg"%}' alt="Service icon">
+              </div>
+
+              <div class="service-content">
+                <p class="service-item-title">Special Support</p>
+
+                <p class="service-item-text">24/7 Dedicated Support</p>
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+      <h2>Products</h2>
+      <div class="containers"> <!-- Make sure the "containers" class wraps around the product cards -->
+        {% for product in products %}
+          <div class="images" id="product-{{forloop.counter}}" data-name="product-{{forloop.counter}}">
+            <div class="icon-container">
+              <form method="POST" action="{% url 'add_to_wishlist' product.id %}">
+                {% csrf_token %}
+                <button type="submit" style="background: none; border: none; padding: 0;">
+                    <div class="icon-box heart-icon">
+                        <img src='{% static "./image/heart.png"%}' class="heart" alt="Heart Icon" />
+                    </div>
+                </button>
+            </form>
+            
+              <div class="icon-box eye-icon">
+                <a href="{% url 'product_view' product.id %}"><img src='{% static "./image/view.png"%}' class="eye" alt="Eye Icon" /></a>
+              </div>
+            </div>
+            <img src="{{ product.product_image.url }}" alt="{{ product.product_title }}">
+            <h3>{{ product.product_title }}</h3>
+            <div class="prices">
+              <p class="old-price">&#8377;{{ product.old_price }}</p>
+              <p class="new-price">&#8377;{{ product.new_price }}</p>
+            </div>
+            <a class="add-cart" href="{% url 'add_cart' product.id %}">Add to Cart</a>
+          </div>
+        {% endfor %}
+      </div>
+  <!-- Popup (Initially Hid7en) -->
+  <div id="wishlist-popup" class="wishlist-popup">
+    <p id="wishlist-popup-message"></p>
+  </div>
+  <!-- banner -->
+  <section id="banner" class="section-m1">
+    <button class="btn normal">Explore more</button>
+    </section>
+ <!-- popular brands  -->
+ <section id="categories" class="categories">
+  <h2>Our popular brands</h2>
+  <div class="category-grid">
+      <div class="categorys">
+          <img src='{% static "./image/brand1.webp"%}' alt="off1">
+      </div>
+      <div class="categorys">
+          <img src='{% static "./image/brand2.webp"%}' alt="off2">
+      </div>
+      <div class="categorys">
+          <img src='{% static "./image/brand3.webp"%}' alt="off3">
+      </div>
+      <div class="categorys">
+        <img src='{% static "./image/brand6.webp"%}' alt="off4">
+    </div>
+    <div class="categorys">
+      <img src='{% static "./image/brand4.webp"%}' alt="off5">
+  </div>
+ 
+  </div>
+</section>
+  
+     <!-- 
+        - #NEWSLETTER
+      -->
+      <section id="newsletter" class="section-p1">
+        <div class="newstext">
+          <h4>Sign Up for Newsletters</h4>
+          <p>Get Email updates about our latest shop and <span> special offers.</span> </p>
+        </div>
+          <div class="form">
+          <input type="text" placeholder="Your email address">
+             <button class="btn normals">Sign Up</button>
+          </div>
+         
+        </div>
+        
+      </section>
+      
+      
+  {% endblock%}
